@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XFPETS.Views.PetPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodel="clr-namespace:XFPETS.ViewModels"
+    xmlns:pancake="clr-namespace:Xamarin.Forms.PancakeView;assembly=Xamarin.Forms.PancakeView"
+    Title="{Binding Title}"
+    mc:Ignorable="d" Visual="Material">
+    <ContentPage.BindingContext>
+        <viewmodel:PetViewModel />
+    </ContentPage.BindingContext>
+    <ScrollView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30" />
+                <RowDefinition Height="250" />
+                <RowDefinition Height="200" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="0.5*" />
+            </Grid.ColumnDefinitions>
+
+            <CollectionView
+                x:Name="CollectionViewSource"
+                Grid.Row="1"
+                Grid.Column="1"
+                SelectionMode="Single"
+                ItemsSource="{Binding Items}"
+                SelectedItem="{Binding SelectedItem, Mode=TwoWay}"
+                BackgroundColor="Gray">
+                <CollectionView.Header>
+                    <StackLayout>
+                        <Label
+                            Text="Pets"
+                            HorizontalOptions="Center"
+                            FontSize="30"
+                            TextColor="Orange" />
+                        <pancake:PancakeView
+                            BackgroundColor="LawnGreen"
+                            CornerRadius="20,20,0,0"
+                            Elevation="1"
+                            HasShadow="False"
+                            HeightRequest="40" />
+                    </StackLayout>
+                </CollectionView.Header>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <pancake:PancakeView
+                            BorderThickness="10"
+                            CornerRadius="30,0,0,30"
+                            BackgroundColor="Orange"
+                            HasShadow="True">
+                            <StackLayout>
+                                <Label
+                                    FontAttributes="Bold"
+                                    FontSize="20"
+                                    Text="{Binding Name}"
+                                    TextColor="White" />
+                                <Image
+                                    IsAnimationPlaying="True"
+                                    HeightRequest="200"
+                                    WidthRequest="200"
+                                    Source="{Binding Image}" />
+                                <StackLayout Orientation="Horizontal">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="20"
+                                        Text="Location "
+                                        TextColor="White" />
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="20"
+                                        Text="{Binding Location}"
+                                        TextColor="White" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="20"
+                                        Text="Breed "
+                                        TextColor="White" />
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="20"
+                                        Text="{Binding Breed}"
+                                        TextColor="White" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="20"
+                                        Text="Gender "
+                                        TextColor="White" />
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="20"
+                                        Text="{Binding Gender}"
+                                        TextColor="White" />
+                                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="20"
+                                        Text="Type "
+                                        TextColor="White" />
+                                    <Label
+                                        FontAttributes="Bold"
+                                        FontSize="20"
+                                        Text="{Binding Type}"
+                                        TextColor="White" />
+                                </StackLayout>
+
+                            </StackLayout>
+                        </pancake:PancakeView>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </Grid>
+    </ScrollView>
+</ContentPage>

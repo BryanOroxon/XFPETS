@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XFPETS.Views.HomePage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:viewmodel="clr-namespace:XFPETS.ViewModels"
+    Title="{Binding Title}"
+    Visual="Material"
+    mc:Ignorable="d">
+    <ContentPage.BindingContext>
+        <viewmodel:PetViewModel />
+    </ContentPage.BindingContext>
+    <ScrollView>
+        <Grid Grid.Row="0" Grid.Column="0">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="45" />
+                <RowDefinition Height="10" />
+                <RowDefinition Height="320" />
+                <RowDefinition Height="2*" />
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.5*" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="0.5*" />
+            </Grid.ColumnDefinitions>
+            <Label
+                
+                Grid.ColumnSpan="3"
+                HorizontalOptions="Center"
+                VerticalOptions="End"
+                FontAttributes="Bold"
+                Text="Paws and Purrs"
+                TextColor="Black"
+                FontSize="30" />
+            <!--CarouselView
+                Grid.Row="1"
+                Grid.Column="1"
+                ItemsSource="{Binding Pets}">
+                <CarouselView.ItemTemplate>
+                    <DataTemplate>
+                        <StackLayout>
+                            <Frame
+                                HasShadow="True"
+                                BorderColor="DarkGray"
+                                CornerRadius="15"
+                                HeightRequest="250"
+                                HorizontalOptions="Center"
+                                VerticalOptions="CenterAndExpand">
+                                <StackLayout>
+                                    <Label
+                                        Text="{Binding Name}"
+                                        FontAttributes="Bold"
+                                        FontSize="Large"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center" />
+                                    <Image
+                                        Source="{Binding Image}"
+                                        Aspect="AspectFill"
+                                        HeightRequest="150"
+                                        WidthRequest="150"
+                                        HorizontalOptions="Center" />
+                                    <Label
+                                        Text="{Binding Gender}"
+                                        HorizontalOptions="Center" />
+                                    <Label
+                                        Text="{Binding Breed}"
+                                        FontAttributes="Italic"
+                                        HorizontalOptions="Center"
+                                        MaxLines="5"
+                                        LineBreakMode="TailTruncation" />
+                                </StackLayout>
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CarouselView.ItemTemplate>
+            </-->
+            <ListView
+                x:Name="PetsList"
+                Grid.Row="2"
+                Grid.Column="1"
+                ItemsSource="{Binding Items}"
+                RefreshCommand="{Binding LoadItemsCommand}"
+                ItemSelected="OnItemSelected"
+                IsPullToRefreshEnabled="True"
+                BackgroundColor="Transparent"
+                HasUnevenRows="true">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Frame
+                                HasShadow="True"
+                                BorderColor="DarkGray"
+                                CornerRadius="15"
+                                HeightRequest="230"
+                                WidthRequest="260"
+                                HorizontalOptions="CenterAndExpand"
+                                VerticalOptions="CenterAndExpand">
+                                <StackLayout>
+                                    <Label
+                                        Text="{Binding Name}"
+                                        FontAttributes="Bold"
+                                        FontSize="Large"
+                                        HorizontalOptions="Center"
+                                        VerticalOptions="Center" />
+                                    <Image
+                                        Source="{Binding Image}"
+                                        Aspect="AspectFill"
+                                        HeightRequest="160"
+                                        WidthRequest="160"
+                                        HorizontalOptions="Center" />
+                                    <StackLayout
+                                        Orientation="Horizontal"
+                                        HorizontalOptions="Center">
+                                        <Label
+                                            Text="{Binding Gender}"
+                                            HorizontalOptions="Center" />
+                                        <Label
+                                            Text="{Binding Breed}"
+                                            FontAttributes="Italic"
+                                            HorizontalOptions="Center"
+                                            MaxLines="5"
+                                            LineBreakMode="TailTruncation" />
+                                    </StackLayout>
+                                </StackLayout>
+                            </Frame>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+            <Button
+                Grid.Row="4"
+                Grid.Column="1"
+                TranslationY="-10"
+                BackgroundColor="Orange"
+                CornerRadius="25"
+                Clicked="Donate_Clicked"
+                Text="Save a Life. Donate a Shelter Pet!" />
+            <Image
+                Grid.Row="3"
+                Grid.Column="1"
+                WidthRequest="50"
+                HeightRequest="50"
+                TranslationY="5"
+                Source="dog1"
+                HorizontalOptions="CenterAndExpand" />
+        </Grid>
+    </ScrollView>
+</ContentPage>

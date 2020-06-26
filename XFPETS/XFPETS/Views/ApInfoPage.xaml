@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="XFPETS.Views.ApInfoPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:magic="clr-namespace:MagicGradients;assembly=MagicGradients"
+    Title="{Binding Title}"
+    Visual="Material"
+    mc:Ignorable="d">
+    <Grid>
+        <magic:GradientView VerticalOptions="FillAndExpand">
+            <magic:CssGradientSource>
+                <![CDATA[
+                    linear-gradient( 109.6deg,  rgba(9,9,121,1) 11.2%, rgba(144,6,161,1) 53.7%, rgba(0,212,255,1) 100.2% )
+                ]]>
+            </magic:CssGradientSource>
+        </magic:GradientView>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height=".025*" />
+                <RowDefinition Height=".5*" />
+                <RowDefinition Height=".05*" />
+
+            </Grid.RowDefinitions>
+            <Frame
+                Grid.Row="1"
+                BackgroundColor="Black"
+                Opacity=".8"
+                BorderColor="OrangeRed"
+                HasShadow="True"
+                CornerRadius="25">
+
+                <StackLayout
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+                    <Label
+                        Text="Device Information"
+                        FontSize="34"
+                        FontAttributes="Bold"
+                        TextColor="White"
+                        TranslationY="-15" />
+                    <Label
+                        x:Name="LabelDevice"
+                        HorizontalOptions="CenterAndExpand"
+                        TextColor="White"
+                        FontSize="Medium"
+                        FontAttributes="Bold" />
+                    <Label
+                        x:Name="LabelDeviceDisplay"
+                        HorizontalOptions="CenterAndExpand"
+                        TextColor="White"
+                        FontSize="Medium"
+                        FontAttributes="Bold" />
+                    <Image Source="dog3" />
+                </StackLayout>
+
+            </Frame>
+        </Grid>
+
+    </Grid>
+</ContentPage>
