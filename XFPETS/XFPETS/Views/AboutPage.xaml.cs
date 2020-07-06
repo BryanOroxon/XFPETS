@@ -21,9 +21,9 @@ namespace XFPETS.Views
                 $"{AppInfo.BuildString}";
         }
 
-        private async void Button_Clicked(object sender, EventArgs e)
+        private void Button_Clicked(object sender, EventArgs e)
         {
-            await Browser.OpenAsync("https://xamarininteligente.com", BrowserLaunchMode.SystemPreferred );
+           
         }
 
         private async void DevInfo_Clicked(object sender, EventArgs e)
